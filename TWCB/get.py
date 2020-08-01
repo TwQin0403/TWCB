@@ -21,6 +21,13 @@ def get(code):
         results = []
         for single_code in code:
             print("Start to process the {}".format(single_code))
+
+            if not isinstance(single_code,(str)):
+                raise TypeError("Input Not String")
+
+            if not 'px' in single_code:
+                raise TypeError("px not in the string") 
+
             time.sleep(1)
             try:
                 result = fetch.fetch_single_sheet(single_code)
@@ -33,6 +40,10 @@ def get(code):
 
     elif isinstance(code,(str)):
         print("Start to process the {}".format(code))
+
+        if not 'px' in code:
+            raise TypeError("px not in the string") 
+
         try:
             return fetch.fetch_single_sheet(code)
         
