@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
 from . import utils
+from . import fetch
 
-reference = pd.read_csv('reference.csv')
+try:
+    reference = pd.read_csv('reference.csv')
+
+except:
+    reference = fetch.fetch_reference_table()
+
 
 def search_by_keyword(keyword):
     reference = utils.get_reference()
