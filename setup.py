@@ -10,7 +10,7 @@ with open('LICENSE') as f:
 
 setup(
     name='TWCB',
-    version='0.1.1',
+    version='0.1.2',
     description='Third API for TWCB',
     long_description=readme,
     long_description_content_type='text/x-rst',

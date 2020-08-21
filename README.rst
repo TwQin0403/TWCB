@@ -1,1 +1,1 @@
-TWCB==This simple project is the third party api for Taiwan central bank database
+This simple project is the third party api for Taiwan central bank database
