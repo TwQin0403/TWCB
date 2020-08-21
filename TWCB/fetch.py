@@ -30,6 +30,7 @@ def fetch_reference_table():
         reference_table = reference_table.append(tmp_df)
     
     #replace the current reference table
+    reference_table = reference_table[~(reference_table['code']=='EG3WM01.px')]
     reference_table.to_csv('reference.csv',index=None)
     return reference_table
 
