@@ -6,6 +6,7 @@ from . import fetch
 from . import search
 from . import utils
 import time
+import json
 
 def get(code):
     '''
@@ -56,6 +57,21 @@ def get(code):
 def get_by_search(keyword):
     code_list = search.search_by_keyword(keyword)
     return get(code_list)
+
+def get_all(filename='download_TWCB.json'):
+    result_dict={}
+    info = get_info()
+    for tb_name,tb_code in zip(info['tb_name'],info['code']):
+        time.sleep(1)
+        try:
+            table = get(tb_code)
+            result_dict.update({tb_name:table.to_json()})
+        
+        except:
+            print("Error happens with tb_name:{} with the code:{}".format(tb_name,tb_code))
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(result_dict,f)
+    
 
 def get_info():
     return utils.get_reference()
